@@ -6,7 +6,6 @@ use App\Http\Controllers\MainController;
 
 Route::get('/', [MainController::class, 'index'])->name('index');
 
-/* ================= PEKERJAAN ================= */
 Route::prefix('pekerjaan')->group(function () {
     Route::get('/', [PekerjaanController::class, 'index'])->name('pekerjaan.index');
     Route::get('/add', [PekerjaanController::class, 'add'])->name('pekerjaan.add');
@@ -16,6 +15,5 @@ Route::prefix('pekerjaan')->group(function () {
     Route::delete('/delete/{id}', [PekerjaanController::class, 'destroy'])->name('pekerjaan.destroy');
 });
 
-/* ================= PEGAWAI ================= */
 Route::resource('pegawai', PegawaiController::class);
 
