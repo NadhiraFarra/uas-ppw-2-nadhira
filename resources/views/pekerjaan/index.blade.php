@@ -2,6 +2,13 @@
 @section('title','Pekerjaan')
 @section('menupekerjaan', 'underline decoration-4 underline-offset-7')
 @section('content')
+
+@if(session('success'))
+    <div class="mb-4 rounded-md bg-green-100 px-4 py-3 text-green-800">
+        {{ session('success') }}
+    </div>
+@endif
+
     <section class="p-4 bg-white rounded-lg min-h-[50vh]">
         <h1 class="text-3xl font-bold text-[#C0392B] mb-6 text-center">Pekerjaan</h1>
         <div class="mx-auto max-w-screen-xl">
@@ -33,7 +40,10 @@
                             <td class="px-4 py-3">{{ $k+1 }}</td>
                             <td class="px-4 py-3 font-medium text-gray-900">{{ $d->nama }}</td>
                             <td class="px-4 py-3 text-gray-600">{{ $d->deskripsi }}</td>
-                            <td class="px-4 py-3 text-gray-600">{{ 100 }}</td>
+                            <td class="px-4 py-3 text-gray-600">
+    {{ $d->pegawai_count }}
+</td>
+
                             <td class="px-4 py-3 text-center text-gray-600">
                                 <div class="inline-flex rounded-md shadow-sm" role="group">
                                     <a href="{{ route('pekerjaan.edit', ['id' => $d->id]) }}" class="cursor-pointer rounded-l-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-blue-600 hover:bg-blue-50">
@@ -55,7 +65,9 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
+            <div class="mt-4">
+                {{ $data->links() }}
+            </div>
     </section>
 @endsection
